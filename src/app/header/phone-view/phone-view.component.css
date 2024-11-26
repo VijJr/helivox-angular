@@ -1,0 +1,35 @@
+div.nav {
+    overflow: hidden;
+    background-color: #f8f9fe;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 1;
+    margin: 0px;
+  }
+hr {
+    width: 90%;
+    background-color: rgba(0, 0, 0, .2);
+    height: 1px;
+    margin-bottom: 0px;
+}
+img {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0 1.5em;
+    overflow: hidden;
+    margin-right: 30%;
+    width: 5rem; 
+    margin-top: 10px;
+    
+}
+
+span {
+    float: right;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-right: 10%;
+    color: black;
+    opacity: 70%;
+    cursor: pointer;
+}

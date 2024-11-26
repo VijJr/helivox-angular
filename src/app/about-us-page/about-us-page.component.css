@@ -1,0 +1,23 @@
+
+h1 {
+    font-size: 60px;
+    font-weight: 600;
+    display: inline;
+}
+
+hr {
+    width: 91.4%;
+    background-color: rgba(0, 0, 0, .2);
+    height: 1px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.banner {
+    padding: 100px 0px 100px 0px;
+}
+
+blockquote {
+    font-size: 30px;
+    border-left: 5px solid #5dc60b;
+}

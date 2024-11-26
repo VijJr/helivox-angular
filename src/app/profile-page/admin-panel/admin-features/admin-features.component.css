@@ -1,0 +1,153 @@
+.user_display{
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 8px;
+    margin: 5px;
+    font-size: 19px;
+
+}
+
+.user_list{
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.role{
+    margin: 0px;
+}
+
+.dropdown {
+    position: absolute; 
+    top: 34px; 
+    width: 250px; 
+    height: fit-content; 
+    background-color: white; 
+    z-index: 2;
+    border-radius: 6px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: .5px 1px 3px 1px #8888883d;
+
+}
+
+.ddCont {
+    padding-left: 20px;
+    font-size: 16px;
+    margin: 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+.ddCont:hover {
+    background-color: rgba(128, 128, 128, 0.226);
+}
+
+.search{
+    margin: 0px;
+    color: black;
+}
+
+.button, label, input {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: red;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.button:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+
+.button:focus {
+    outline: 1px transparent;
+}
+
+.button:before {
+    display: none;
+}
+
+.button:-webkit-details-marker {
+    display: none;
+}
+
+.button-active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(201, 203, 206, 0.089) 0 1px 0 inset;
+    transition: none 0s;
+    border-color: rgba(0, 0, 0, 0.404);
+}
+.card {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.068);
+    padding: 0px
+}
+
+.arrows{
+    text-align: left;
+    padding: 0px 30px 0px 30px;
+}
+
+.arrow {
+    cursor: pointer; 
+    user-select: none;
+    font-size: 23px;
+}
+
+.active{
+    display: inline-block;
+    color:green
+}
+
+.failed {
+    display: inline-block;
+    color: red
+}
+
+hr {
+    width: 91%;
+    background-color: rgba(0, 0, 0, .2);
+    height: 1px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}

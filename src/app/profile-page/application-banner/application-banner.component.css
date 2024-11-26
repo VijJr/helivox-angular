@@ -1,0 +1,68 @@
+div.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+
+}
+
+h1 {
+    font-size: calc(70% + 1vw + 1vh);
+    font-weight: 500;
+}
+
+img {
+    height: 400px;
+    padding-left: 3vw
+}
+
+.col-md-4{
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+.button {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 975px) {
+    img {
+        height: 400px;
+        padding: 0px
+    }
+}

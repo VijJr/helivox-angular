@@ -1,0 +1,10 @@
+<header></header>
+<dropdown-alert [text]='dta.getAlertText()' [color]="dta.getAlertColor()" *ngIf="dta.getAlertStatus()"></dropdown-alert>
+
+<div class="container-fluid main">
+      <router-outlet />
+</div>
+
+<!-- To standardize viewport -->
+<div style="background-color: #f8f9fe; width: 1px; height: 900px"></div>
+

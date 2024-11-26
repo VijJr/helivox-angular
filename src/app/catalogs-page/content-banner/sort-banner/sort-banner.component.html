@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-8">
+            <button class="button" role="button" 
+                [ngClass]="selected === types[i] ? 'button-active' : ''" 
+                (click)="selected = types[i]; category.emit(selected)" 
+                *ngFor="let type of types; let i = index">
+            {{types[i]}}</button>
+        </div>
+    </div>
+
+</div>
+
+

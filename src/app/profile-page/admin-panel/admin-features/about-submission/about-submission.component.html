@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-12" >
+        <h1 style="font-weight: 300;">About You:</h1><br>
+        *Note: Database is sorted by name so if some individuals have the same name, one must include a distinguishing factor (only for admins)<br>
+        <label>{{selectedFile}}
+            <input #imgInput
+                   type="file"
+                   accept="image/*"
+                   (change)="currentImage = $event; selectedFile=this.currentImage.target.files[0].name">
+        </label>  
+        <div style="display: inline; position: relative">
+            <button class="button role" style="color: black;" (click)="openDropdown = !openDropdown">
+                {{selectedCategory}}
+    
+            </button>
+            <div class="dropdown" *ngIf="openDropdown">
+                <p class="ddCont" *ngFor="let data of dropdownData" (click)="submitCategory(data)">{{data}}</p>
+            </div>
+        </div>
+
+        <input placeholder="Name" [(ngModel)]="name"> <input placeholder="Role" [(ngModel)]="role"><br> 
+        <textarea placeholder="Description" rows="5" cols="100" [(ngModel)]="description"></textarea ><br>
+        <button class="button" style="background-color:  green; color: white" (click)="openModal()">Submit</button>
+    </div>
+</div>
+
+<confirmation-modal *ngIf="confirmationModal" (confirmation)="checkConfirmation($event)"></confirmation-modal>

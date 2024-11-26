@@ -1,0 +1,18 @@
+div.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-size: calc(70% + 1vw + 1vh);
+    font-weight: 500;
+}
+
+img {
+    height: 300px;
+}
+
+.col-sm-4{
+    display: flex;
+    justify-content: center;
+}

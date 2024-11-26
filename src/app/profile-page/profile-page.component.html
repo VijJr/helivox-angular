@@ -1,0 +1,39 @@
+<div class="outer">
+    <div class="row">
+        <div class="img_holder col-md-3">
+            <div class="upload">
+                <img [src]="pfp()" alt="">
+                
+            </div>
+            <p style="font-size: 15px; margin-top: 5px;">*Please do not include your personal image</p>
+            <label>{{selectedFile}}
+                <input #imgInput
+                       type="file"
+                       accept="image/*"
+                       (change)="currentImage = $event; selectedFile=this.currentImage.target.files[0].name">
+            </label>
+            <button class="button" (click)="checkImage()" style="color: black; margin-top: 5px;">Upload Picture</button>
+        </div>
+        <div class="col-md-8" style="height: 200px; margin-top: 8%">
+            <h1 class="welcome-text">Welcome {{user.getUsername()}}!</h1>
+            
+        </div>
+
+
+    </div>
+    <br>
+    <hr>
+
+    <admin-panel *ngIf="user.role >= 1"></admin-panel>
+
+    <application-banner></application-banner>
+    <hr>
+    <confirmation-modal *ngIf="confirmationValue !== ''" (confirmation)="checkConfirmation($event)"></confirmation-modal>
+
+
+    <button class="button" (click)="logout()" style="margin-top: 50px; ">Logout</button>
+    <button class="button" (click)="deleteSignedInUser()" style="margin-top: 50px; ">Delete Account</button>
+
+    <div class="loading" *ngIf="unloaded">Loading&#8230;</div>
+
+</div>

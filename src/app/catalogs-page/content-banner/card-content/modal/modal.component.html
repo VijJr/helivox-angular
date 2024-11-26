@@ -1,0 +1,145 @@
+<div class="box" (click)="isOpen=true; check()">
+    <div class="inner-box" (click)="notToggled=true">
+        
+        <!-- Input Form -->
+        <ng-container *ngIf="editorMode" >
+            <form [formGroup]="catalogForm"> 
+                <div style="text-align: center; padding-right: 20px"> 
+                    <p style=" padding: 20px; font-weight: 500; font-size: 20px">INPUT FORM</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" value="{{filters.school}}" style="width: 150px; color: black" disabled>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="{{filters.state }} " style="width: 150px; color: black" disabled>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="{{filters.catalog }}" style="width: 150px; color: black" disabled>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="{{selected}}" style="width: 150px; color: black" disabled>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding-top: 20px; ">
+                        <div class="col-md-4">
+                            Title: 
+                            <input type="text" placeholder="Title" value="{{title}}" formControlName="title">
+                        </div>
+                        <div class="col-md-4">
+                            Hours:
+                            <input type="number" placeholder="HRS/WEEK"  value="{{hrs}}" style="width: 70%" formControlName="hours">
+                        </div>
+                        <div class="col-md-4">
+                            Cost:
+                            <input type="number" placeholder="cost" value="{{cost}}" formControlName="cost">
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px; ">
+                        <div class="col-md-4">
+                            Tag#1:
+                            <select formControlName="tag1">
+                                <option [ngValue]="tags" *ngFor="let tags of dta.getTags(selected)" [selected]="tags === tagPreselect1" >{{tags}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            Tag#2:
+                            <select formControlName="tag2">
+                                <option [ngValue]="null">None</option>
+                                <option [ngValue]="tags" *ngFor="let tags of dta.getTags(selected)" [selected]="tags === tagPreselect2" >{{tags}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            Tag#3:
+                            <select formControlName="tag3">
+                                <option [ngValue]="null">None</option>
+                                <option [ngValue]="tags" *ngFor="let tags of dta.getTags(selected)" [selected]="tags === tagPreselect3" >{{tags}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px; ">
+                        <div class="col-md-6">
+                            Web Link:
+                            <input type="text" placeholder="Link (na if none)" value="{{link}}" formControlName="link"> 
+                        </div>
+
+                        <div class="col-md-6">
+                            Image:
+                            <input type="text" placeholder="Image link" value="{{image}}" formControlName="image">
+                        </div>
+                    </div>
+                    <div class="row">
+                        Description:<br>
+                        <textarea type="text" placeholder="Description" rows="12" class="form-control" formControlName="description">{{desc}}</textarea>
+                        <p class="error" *ngIf="!catalogForm.get('description').valid && catalogForm.touched">Minimum of 20 characters required</p>
+                    </div>
+                    
+                    <hr>
+                    <div class="row">
+                        <button style="color: rgb(24, 175, 24); margin-right: 4px" (click)="submitElement()" [class.disabledCursor]="!catalogForm.valid" [disabled]="!catalogForm.valid">
+                            Submit
+                        </button>
+                        
+                        <button style="color: rgb(223, 12, 12)" (click)="deleteElement()" *ngIf="index !== -1">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+
+        <!-- Main Data -->
+
+        <ng-container *ngIf="!editorMode">
+            <div class="row">
+                <div class="col-sm-7">
+                    <h3>{{data.title}}</h3>
+                </div>
+                <div class="col-sm-5" style="margin-top: 15px;">
+                    <span style="background-color: rgb(26, 138, 138)">{{data.tags[0]}} HRS/WEEK</span>
+                    <span style="background-color: rgb(17, 146, 17)">${{data.tags[1]}}</span>
+                    <a href="{{data.link}}" target="_blank" style="text-decoration:none" *ngIf="data.link !== 'na'"><span style="background-color: rgb(182, 17, 17); cursor: pointer" >Learn More</span></a>
+                    
+                    <span style="background-color: rgba(0, 0, 0, 0.055); cursor: pointer; font-weight: 700;right: 40px; border: 1px solid rgba(0, 0, 0, 0.445); position: absolute;color: black;" (click)="isOpen = true; check()">x</span>
+    
+                </div>
+            </div>
+            <div *ngIf="!commentsToggled">
+                <img [src]="data.image" class="image-display">
+                <p class="data-text">{{data.description}}</p>
+    
+                <div style="position: relative" *ngIf="verified()">
+                    <button *ngIf="!volMenu" (click)="openDropDown = !openDropDown;" [disabled]="(userRating === -2) || resubmit" > {{((userRating === -2) || resubmit) ? 'Thank You!' : "Give a Rating"}} </button>
+                    <div class="dropdown" *ngIf="openDropDown">
+                        <p class="ddCont" *ngFor="let rating of userRatingOptions; let i = index" (click)="userRating = -2; parseRating(i+1)">{{rating}}</p>
+                    </div>
+    
+                </div>
+    
+    
+    
+    
+            </div>
+    
+            <div style="text-align: center" *ngIf="commentsToggled && verified()" >
+                <input placeholder="Enter Comment" [(ngModel)]="comments"><button (click)="pushComments()">Enter</button>
+            </div>
+    
+            <div *ngIf="commentsToggled" class="comment-box">
+                <p *ngIf="this.inputs[this.index].comments === undefined && verified()" style="text-align: center; font-weight: 500;">There are no comments yet. Try commenting!</p>
+                <p *ngIf="!verified()" style="text-align: center; font-weight: 500;">Sign up to comment!</p>
+                <div *ngFor="let d of this.inputs[this.index].comments; let i = index" >
+                    <p style="font-weight: 500; margin: 0">{{d[0]}}: </p> <blockquote>{{d[1]}}</blockquote>
+                </div>
+            </div>
+       
+            <span *ngIf="!volMenu" style="background-color: rgb(86, 88, 86); cursor: pointer; margin-bottom: 10px;" (click)="commentsToggled = !commentsToggled">{{commentsToggled ? "<< Description" : "Comments >>"}}</span>
+
+        </ng-container>
+
+
+
+
+    </div>
+</div>
+

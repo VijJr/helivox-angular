@@ -1,0 +1,76 @@
+Hours Completed: {{user.hours}}
+
+<div class="row">
+    <div class="col-md-3 left">
+        <h1>Quests: </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 left">
+        <table>
+            <tr>
+            <th># of hours granted</th>
+            <th>Task</th>
+            </tr>
+            <tr>
+            <td>1 hour</td>
+            <td>Inserted School into catalogs</td>
+            </tr>
+            <tr>
+            <td>1 hour each</td>
+            <td>Completed catalog entry</td>
+            </tr>
+            <tr>
+            <td>3 hrs</td>
+            <td>Completed shortform (2 pages) article</td>
+            </tr>
+            <tr>
+            <td>4 hrs</td>
+            <td>Completed longform (3+ pages) article</td>
+            </tr>
+            <br>
+
+        </table>
+        *Successful completion must be approved by an editor
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-3 left">
+        <h1>Pending Quests: </h1>
+    </div>
+</div>
+<div style="text-align: left; cursor: pointer">
+    <div class="user_list">
+        <ng-container *ngFor=" let n of volData; let i = index">
+            <div class="row user_display" (click)="isOpen = true; selected = i">
+                <div class="col-md-3">
+                    <p> Title:</p>{{n.title}}
+                </div>
+                <div class="col-md-3">
+                    <div style="width: fit-content;">
+                       <p> Category:</p> {{n.category}}
+                    </div>
+    
+                </div>
+                <div class="col-md-6">
+                    <p> School:</p> {{n.school}}
+                </div>
+
+            </div>
+        </ng-container>
+    </div>
+    
+    <modal *ngIf="isOpen" (openEvent)="isOpen = false; selected = -1;" [index]="selected" [allCatalogData]="volData" [volMenu]="true"></modal>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-3 left">
+        <h1>About You: </h1>
+    </div>
+    
+</div>
+<div class="row">Your name: <input type="text" [value]="user.name === undefined ? '' : user.name" placeholder="Input name" [(ngModel)]="name"><button (click)="submitName()">Submit</button></div>

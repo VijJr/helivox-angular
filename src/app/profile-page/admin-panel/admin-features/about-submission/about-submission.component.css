@@ -1,0 +1,62 @@
+.button, label, input, textarea {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  
+
+    margin: 10px 0px 10.5px 5px;
+}
+
+input[type="file"] {
+    display: none;
+    
+}
+.dropdown {
+    position: absolute; 
+    top: 34px; 
+    width: 250px; 
+    left: 0px;
+    height: fit-content; 
+    background-color: white; 
+    z-index: 2;
+    border-radius: 6px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: .5px 1px 3px 1px #8888883d;
+    font-weight: normal;
+    text-align: left
+}
+
+.ddCont {
+    padding-left: 20px;
+    font-size: 16px;
+    margin: 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+.ddCont:hover {
+    background-color: rgba(128, 128, 128, 0.226);
+}
+
+textarea {
+    white-space:normal;
+}

@@ -1,0 +1,19 @@
+<p>Tag Input</p>
+<div class="upper-banner">
+    <div class="row">
+        <button class="button" *ngFor="let category of categories; let j = index" 
+        [ngClass]="selected === j ? 'button-active' : ''"
+        (click)="selected = j" >{{category}}</button>
+        <input type="text" style="width: 8%" placeholder="New Category" [(ngModel)]="newCategory">
+    </div>
+</div><br>Note: If creating a new category, include a tag or it will not be parsed<br><br>
+<div class="col-md-12">
+    <div *ngFor="let data of tags[categories[selected]]; let i = index; trackBy: trackByFn">
+        <input type="text" [(ngModel)]="tags[categories[selected]][i]">
+    </div>
+    <input type="text" [(ngModel)]="newTags[selected]" placeholder="New Tag">
+</div>
+<button class="button submit" (click)="submit()">Submit</button>
+<button class="button delete" (click)="deleteC()">Delete Category</button>
+
+<confirmation-modal *ngIf="confirmationModal" (confirmation)="checkConfirmation($event)"></confirmation-modal>

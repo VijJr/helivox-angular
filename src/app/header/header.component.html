@@ -1,0 +1,35 @@
+<div class="nav disable-selection">
+    <ul class="hnav">
+        <img src="../../assets/helivox.png" alt="" class="img img-responsive" routerLink="/">
+        
+        <li routerLinkActive="current" [routerLinkActiveOptions]="{exact: true}" (click)="cancelDropdown()"><a data-hover="Home" routerLink="/">Home</a></li>
+        <li app-dropdown><a data-hover="Catalogs">Catalogs</a><span class="caret"></span></li>
+        <li routerLinkActive="current" (click)="cancelDropdown()"><a data-hover="Articles" routerLink="articles">Articles</a></li>
+        <li routerLinkActive="current" (click)="cancelDropdown()"><a data-hover="About Us" routerLink="about-us">About Us</a></li>
+        <li routerLinkActive="current" (click)="cancelDropdown()" *ngIf="!checkIsUser()"><a data-hover="Login" routerLink="login">Login</a></li>
+        <li routerLinkActive="current" (click)="cancelDropdown()" *ngIf="checkIsUser()"><a data-hover="Profile" routerLink="profile" >Profile</a></li>
+    </ul>
+    <a href="https://www.instagram.com/helivoxofficial/"><i class="fa fa-instagram" style="font-size:24px"></i></a>
+    <a href="https://www.youtube.com/channel/UC4NqK7fHG1hS5uU05yv80Pg"><i class="fa fa-youtube" style="font-size:24px"></i></a>
+    <a href="https://www.tiktok.com/@helivoxofficial"><i class="tiktok" style="font-size:24px"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></i></a>
+    <div *ngIf="isEditor()">
+        <a *ngIf="editorMode" (click)="changeMode()"><i class="fa fa-pencil-square-o" style="font-size:24px; right: 18%; top: 45px;"></i></a>
+        <a *ngIf="!editorMode" (click)="changeMode()"><i class="fa fa-eye" style="font-size:24px; right: 18%; top: 45px;"></i></a>
+    </div>
+    <img [src]="checkPFP()" class="pfp" routerLink="profile" *ngIf="checkIsUser()">
+    <hr>
+</div>
+
+<!-- Phone nav bar -->
+<div class="phone-view disable-selection">
+    <phone-view></phone-view>
+</div>
+
+<!-- Phone dropdown -->
+<div #dpdn class="dpdn disable-selection">
+    <dropdown *ngIf="innerWidth >= 1000"></dropdown>
+    <phone-dropdown *ngIf="innerWidth < 1000"></phone-dropdown>
+</div>
+
+
+

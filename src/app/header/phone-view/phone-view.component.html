@@ -1,0 +1,9 @@
+<div class="nav">
+    <img src="../../../assets/helivox.png" alt="" class="img img-responsive" routerLink="/">
+    <a app-dropdown>
+        <span style="font-size: 40px;" *ngIf="!isOpen">&equiv;</span>
+        <span style="font-size: 40px;" *ngIf="isOpen" (click)="isOpen=false;">&#x2715;</span>
+    </a>
+    <hr>
+</div>
+

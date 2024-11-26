@@ -1,0 +1,78 @@
+
+Note: When deleting a user, admin needs to also delete the user on firebase console > authentication > locate user and delete. Accessible via helivoxofficial@helivox.com<br><br>
+<div class="row">
+    <div class="col-md-6" style="padding-left: 20px">
+        <div style="width: fit-content;">
+            Sort Menu: <button class="button role" style="color: black; margin-left: 5px; margin-top: 0px" (click)="openAdminSort = !openAdminSort">
+                {{currentRoleSort === -1 ? "Select Role" : rolesList[currentRoleSort]}}
+            </button>
+
+            <input [(ngModel)]="searchText" placeholder="Search..." class="search">
+
+            <div class="dropdown" *ngIf="openAdminSort" style="text-align: left;">
+                <p class="ddCont" (click)="currentRoleSort = -1; openAdminSort = !openAdminSort">None</p>
+                <p class="ddCont" *ngFor="let roles of rolesList; let j = index" (click)="currentRoleSort = j; openAdminSort = !openAdminSort">{{roles}}</p>
+            </div>
+        </div>
+    </div>
+</div><br>
+<div class="user_list">
+    <ng-container *ngFor=" let n of userListKeys; let i = index">
+        <div class="row user_display" *ngIf="checkIfValid(n)">
+            <div class="col-md-3">
+                {{userList[n].email}}
+            </div>
+            <div class="col-md-3">
+                <div style="width: fit-content;">
+                    <button class="button role" style="color: black;" (click)="selectedUser = selectedUser == i ? -1 : i">
+                        {{rolesList[userList[n].role]}}
+                    
+                    </button>
+                    <div class="dropdown" *ngIf="selectedUser == i">
+                        <p class="ddCont" *ngFor="let roles of rolesList; let j = index" (click)="changeRole(i, j)">{{roles}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                Verified: {{userList[n].verified}}
+            </div>
+            <div class="col-md-3">
+                <button class="button role" style="float: right;" (click)="routeDeletion(i)" *ngIf="!userList[n].verified">Delete</button>
+            </div>
+        </div>
+    </ng-container>
+
+</div>
+<hr>
+<div class="row">
+    <h1 style="font-weight: 300;">Website Edits:</h1><br>
+    <div style="text-align: center;">
+        <p style="display: inline-block; padding-right: 6px"> Website admin features are </p><p class="active" *ngIf="isActive">ACTIVE - proceed</p><p class="failed" *ngIf="!isActive">DOWN - do not edit</p>
+    </div>
+
+   
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <div *ngIf="isActive">
+                <br>
+                <carousel-input *ngIf="currentAdminInput === 0"></carousel-input>
+                <catalogs-input *ngIf="currentAdminInput === 1"></catalogs-input>
+                <schools-input *ngIf="currentAdminInput === 2"></schools-input>
+                <tags-input *ngIf="currentAdminInput === 3"></tags-input>
+                <div class="row arrows">
+                    <span class="arrow" (click)="currentAdminInput = currentAdminInput === 0 ? 3 : (currentAdminInput - 1)">&#8592;</span>
+                    <span class="arrow" style="float: right;" (click)="currentAdminInput = (currentAdminInput + 1) % 4">&#8594;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br><br>
+<hr>
+<about-submission></about-submission>
+
+<confirmation-modal *ngIf="confirmation" (confirmation)="checkConfirmation($event)"></confirmation-modal>
+<div class="loading" *ngIf="unloaded">Loading&#8230;</div>

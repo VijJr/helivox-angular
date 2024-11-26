@@ -1,0 +1,9 @@
+
+<p>Catalog Input</p><br>Note: The last letter of the catalog name will be cut from the title<br><br>
+<div *ngFor="let data of catalogsData; let i = index; trackBy: trackByFn">
+    <input type="text" [(ngModel)]="catalogsData[i]">
+</div>
+<input type="text" placeholder="New Data" [(ngModel)]="newData"><br>
+<button class="button submit" (click)="submit()">Submit</button>
+
+<confirmation-modal *ngIf="confirmationModal" (confirmation)="checkConfirmation($event)"></confirmation-modal>

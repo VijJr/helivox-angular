@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="dropdown">
+        <div class="row">
+            <div class="col">
+                <p class="sort-text" (click)="closeDropdown()"><a routerLink="/">Home</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> 
+                <p class="sort-text" (click)="clicked = !clicked">Catalogs <span *ngIf="!clicked">&#8595;</span><span *ngIf="clicked">&#8593;</span></p>
+                <div *ngIf="clicked">
+                    <hr>
+                    <div class="row marginr">
+                        <div class="col-xs-3" *ngFor="let catalog of catalogs; let i = index" >
+                            <p class="sort-text" [ngClass]="currentCatalog === i ? 'act' : ''"><a (click)="currentCatalog = i">{{catalog}}</a></p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row marginr">
+                        <div class="col-xs-3" *ngFor="let state of states; let i = index">
+                            <p class="sort-text" [ngClass]="currentState === i ? 'act' : ''"><a (click)="currentState = i; changeSchool()">{{state}}</a></p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row marginr">
+                        <div class="col-xs-3" *ngFor="let school of schools; let i = index">
+                            <p class="sort-text"><a [routerLink]="['/catalogs', currentCatalog, currentState, i]" (click)="resetDpdn()">{{school}}</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="sort-text"><a routerLink="articles" (click)="closeDropdown()">Articles</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="sort-text"><a routerLink="about-us" (click)="closeDropdown()">About-Us</a></p>
+            </div>
+        </div>
+        <div class="row" *ngIf="!checkIsUser()">
+            <div class="col">
+                <p class="sort-text"><a routerLink="login" (click)="closeDropdown()">Login</a></p>
+            </div>
+        </div>
+        <div class="row" *ngIf="checkIsUser()">
+            <div class="col">
+                <p class="sort-text"><a routerLink="profile" (click)="closeDropdown()">Profile</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,30 @@
+    
+<div class="row banner">
+    <div class="col-md-12" style="text-align: center;">
+        <h1>About </h1><h1 style="color: #5dc60b">Helivox</h1>
+        <h2 style="font-weight: 500; font-size: 22px;">Lorum ipsum dolor</h2>
+    </div>
+    
+</div>
+<hr>
+<div class="row banner">
+    <div class="col-md-12" style="text-align: center;">
+        <h1 style="font-size: 50px;"> Our Team </h1>
+    </div>
+</div>
+<blockquote>Executives</blockquote>
+<profile-card *ngFor="let e of exec" [person]="e"></profile-card>
+
+<blockquote>Sector Heads</blockquote>
+<profile-card *ngFor="let h of heads" [person]="h"></profile-card>
+
+<blockquote>Editors</blockquote>
+<div class="row" style="text-align: center;">
+    <p style="display: inline" *ngFor="let e of editors; let i = index">{{e}} <span style="display: inline" *ngIf="i !== editors.length-1">,</span></p>
+</div>
+
+
+<blockquote>Volunteers</blockquote>
+<div class="row" style="text-align: center;">
+    <p style="display: inline" *ngFor="let v of volunteers; let i = index">{{v}} <span style="display: inline; margin-right: 2px;" *ngIf="i !== volunteers.length-1">,</span></p>
+</div>

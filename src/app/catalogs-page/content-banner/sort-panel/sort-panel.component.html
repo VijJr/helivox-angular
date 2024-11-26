@@ -1,0 +1,10 @@
+<input [(ngModel)]="searchText" placeholder="Search..." (ngModelChange)="onSearchChange()">
+<div style="position: relative" *ngFor="let type of activeFilters; let z = index">
+    <button (click)="selectedFilter === type ? selectedFilter = '' : selectedFilter = type">{{activeFilters[z]}} <span class="caret"></span></button>
+    <div class="dropdown" *ngIf="selectedFilter === type">
+        <p class="ddCont" *ngFor="let rating of filtrationData[getKeys()[z]]; let i = index" (click)="changeFilters(i, z)">{{rating}}</p>
+        
+    </div>
+</div>
+<a (click)="reset()">RESET</a>
+<br><br>

@@ -1,0 +1,13 @@
+<sort-banner (category)="recordCategory($event)"></sort-banner>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <sort-panel [selected]="selected" (exportFilters)="parseFilters($event)" (exportSearch)="parseSearch($event)"></sort-panel>
+        </div>
+        <div class="col-sm-9">
+            
+            <card-content [selected]="selected" [activeFilters]="activeFilters" [searchText]="searchText" [catalogCategory]="catalogCategory"></card-content>
+            
+        </div>
+    </div>
+</div>

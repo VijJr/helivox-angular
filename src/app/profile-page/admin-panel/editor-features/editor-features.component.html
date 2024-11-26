@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-3 left">
+        <h1>About You: </h1>
+    </div>
+    
+</div>
+<div class="row">Your name: <input type="text" [value]="user.name === undefined ? '' : user.name" placeholder="Input name" [(ngModel)]="name"><button (click)="submitName()">Submit</button></div>
+<br><hr>
+<div class="row">
+    <div class="col-md-3 left">
+        <h1>Pending Quests: </h1>
+    </div>
+</div>
+<div style="text-align: left; cursor: pointer">
+    <div class="user_list">
+        <ng-container *ngFor=" let n of volData; let i = index">
+            <div class="row user_display" (click)="isOpen = buttonClicked ? false : true; selected = i">
+                <div class="col-md-3">
+                    <p style="display: inline"> Title:</p>{{n.title}}
+                </div>
+                <div class="col-md-3">
+                    <div style="width: fit-content;">
+                       <p style="display: inline"> Category:</p> {{n.category}}
+                    </div>
+    
+                </div>
+                <div class="col-md-4">
+                    <p style="display: inline"> School:</p> {{n.school}}
+                </div>
+                <div class="col-md-2" style="text-align: right;">
+                    <button class="button" style="color: red" (click)="buttonClicked = true; editVolData(false, i)">Deny</button>
+                    <button class="button" style="color: green" (click)="buttonClicked = true; editVolData(true, i)">Approve</button>
+                </div>
+
+            </div>
+        </ng-container>
+    </div>
+    
+    <modal *ngIf="isOpen" (openEvent)="isOpen = false; selected = -1;" [index]="selected" [allCatalogData]="volData" [volMenu]="true"></modal>
+</div>

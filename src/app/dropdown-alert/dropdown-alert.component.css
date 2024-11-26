@@ -1,0 +1,33 @@
+div.outer{
+    position: fixed;
+    top:0px;
+    right:120px;
+    bottom:0px;
+    left:0px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    height: 0px
+
+}
+
+p.text{
+    border-radius: 5px;
+    text-align: inline-block;
+    padding: 4px;
+    width: 200%;
+    text-align: center;
+    position: relative;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+span{
+    font-weight: 500;
+    position: absolute;
+    right: 20px;
+    font-size: 15px;
+    top: 8px;
+    cursor: pointer;
+}

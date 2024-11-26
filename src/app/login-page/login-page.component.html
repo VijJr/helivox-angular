@@ -1,0 +1,74 @@
+<div class="container1">
+    <div class="outer-box" *ngIf="activePopup == 'login'">
+        <img src="../../assets/helivox.png">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+            <input type="text" placeholder="Email" formControlName="username">
+            <p *ngIf="(loginForm.get('username').touched === true) && (loginForm.get('username').valid === false) " class="error">Invalid Email</p>
+            <input type="password" placeholder="Password" formControlName="password">
+            <p class="error" style="text-align: center; margin-left: 41%" *ngIf="invalidPassword">Invalid Password</p>
+            <button class="submit" [class.disabledCursor]="!loginForm.valid" [disabled]="!loginForm.valid">Log In</button>
+        </form>
+
+        <div class="strike">
+            <span>or</span>
+        </div>
+        <button class="submit" style="background-color: #f8f9fe; color: #0fc24b" (click)="activePopup = 'signup'">Sign Up</button>
+        <div>
+            <p class="password_change" (click)="resetPassword()">Forgot your password?</p>
+
+        </div>
+    </div>
+    <!-- Signup HTML -->
+    <div class="outer-box" *ngIf="activePopup == 'signup'">
+        <img src="../../assets/helivox.png">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmitSignup()">
+            <input type="text" placeholder="Email" formControlName="username">
+            <p *ngIf="(signupForm.get('username').touched === true) && (signupForm.get('username').valid === false) " class="error">Invalid Email</p>
+            <div formGroupName="passwordData">
+                <input type="password" placeholder="Password" formControlName="password1">
+                <p *ngIf="(signupForm.get('passwordData').touched === true) && (signupForm.get('passwordData.password1').valid === false) " class="error">Password must be longer</p>
+
+                <input type="password" placeholder="Confirm Password" formControlName="password2">
+            </div>
+            <p *ngIf="(signupForm.get('passwordData').valid === false) && (signupForm.get('passwordData').touched === true)" class="error">Passwords don't match</p>
+            <button class="submit" [disabled]="!signupForm.valid" [class.disabledCursor]="!signupForm.valid">Signup</button>
+            <p class="privacy">Review our <a href="../../assets/privacy.pdf" download>privacy policy</a></p>
+        </form>
+
+        <div class="strike">
+            <span (click)="activePopup = 'login'" style="color: #0fc24b; cursor: pointer;">Return</span>
+        </div>
+    </div>
+
+    <!-- Email Verification Popup -->
+
+    <div class="outer-box" *ngIf="activePopup == 'email_verification'">
+        <img src="../../assets/helivox.png">
+        <div>
+            <p class="header">Verify your email address</p>
+
+
+            Click on the link sent to your email and then proceed below
+        </div>
+
+        <div class="strike">
+            <span (click)="confirmEmailVerified()" style="color: #0fc24b; cursor: pointer;">Click here to proceed</span>
+        </div>
+    </div>
+
+    <!-- Reset Password Email Input -->
+    <div class="outer-box" *ngIf="activePopup == 'reset_password_email'">
+        <img src="../../assets/helivox.png">
+        <p class="header">Enter your Email</p>
+        <form [formGroup]="emailResetForm" (ngSubmit)="onSubmitEmailReset()">
+            <input type="text" placeholder="Email" formControlName="username">
+            <p *ngIf="(emailResetForm.get('username').touched === true) && (emailResetForm.get('username').valid === false) " class="error">Invalid Email</p>
+            <br><br><button class="submit" [class.disabledCursor]="!emailResetForm.valid" [disabled]="!emailResetForm.valid">Continue</button>
+        </form>
+        <div class="strike">
+            <span (click)="activePopup = 'login'" style="color: #0fc24b; cursor: pointer;">Return</span>
+        </div>
+    </div>
+
+</div> 
+<div class="loading" *ngIf="unloaded">Loading&#8230;</div>

@@ -1,0 +1,19 @@
+<p>School Input</p>
+<div class="upper-banner">
+    <div class="row">
+        <button class="button" *ngFor="let state of states; let j = index" 
+        [ngClass]="selected === j ? 'button-active' : ''"
+        (click)="selected = j" >{{state}}</button>
+        <input type="text" style="width: 8%" placeholder="New State" [(ngModel)]="newState">
+    </div>
+</div><br>Note: If creating a new state, include a new school or it will not be parsed<br><br>
+<div class="col-md-12">
+    <div *ngFor="let data of schools[states[selected]]; let i = index; trackBy: trackByFn">
+        <input type="text" [(ngModel)]="schools[states[selected]][i]">
+    </div>
+    <input type="text" [(ngModel)]="newSchool[selected]" placeholder="New School">
+</div>
+<button class="button submit" (click)="submit()">Submit</button>
+<button class="button delete" (click)="deleteS()">Delete State</button>
+
+<confirmation-modal *ngIf="confirmationModal" (confirmation)="checkConfirmation($event)"></confirmation-modal>

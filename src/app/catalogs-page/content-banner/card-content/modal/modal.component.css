@@ -1,0 +1,132 @@
+.box {
+    background:rgba(0,0,0,0.8);
+    position:fixed;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-box{
+    background: white;
+    width: 900px;
+    height: 95%;
+    border-radius: 5px;
+    padding-left: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.error{
+    color: red;
+    font-size: 15px
+}
+span {
+    padding: 6px 13px 6px 13px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 12px;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.disabledCursor {
+    cursor:not-allowed;
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+.data-text {
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 2;
+    white-space: pre-line;
+}
+
+.image-display {
+    width: 20%; 
+    margin-top: 20px; 
+    float: left;
+    padding-right: 16px;
+}
+
+.comment-box{
+    margin-top: 10px;
+    margin-right: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input, button, select, textarea {
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.61);
+    margin-top: 10px;
+
+}
+
+textarea {
+    white-space:normal;
+}
+
+.dropdown {
+    position: absolute; 
+    top: 43px; 
+    width: 250px; 
+    height: fit-content; 
+    background-color: white; 
+    z-index: 2;
+    border-radius: 6px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: .5px 1px 3px 1px #8888883d;
+
+}
+
+.ddCont {
+    padding-left: 20px;
+    font-size: 16px;
+    margin: 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+.ddCont:hover {
+    background-color: rgba(128, 128, 128, 0.226);
+}
+
+@media only screen and (max-width: 900px) {
+    .inner-box {
+        width: 100%;
+    }
+  }

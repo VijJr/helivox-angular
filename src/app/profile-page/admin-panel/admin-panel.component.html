@@ -1,0 +1,15 @@
+<div>
+    <h1>{{rolesList[user.role]}} Features:</h1><br>
+    <div class="row">
+        Note: To edit the site, click the eye icon next to the instagram icon in the header. This will toggle edit mode. While in edit mode, navigate to the catalogs or articles to see advanced editing features. 
+    </div>
+    <br><br>
+    <admin-features *ngIf="user.role >= 3"></admin-features>
+    <editor-features *ngIf="user.role === 2"></editor-features>
+    <volunteer-features *ngIf="user.role === 1"></volunteer-features>
+
+    <br><hr>
+</div>
+
+
+

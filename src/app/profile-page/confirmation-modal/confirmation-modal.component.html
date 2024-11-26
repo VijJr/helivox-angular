@@ -1,0 +1,17 @@
+<div class="box" (click)="checkIfClicked()">
+    <div class="inner-box" (click)="clickedBox = true">
+        <div class="row align-right">
+            <span style="cursor: pointer;" (click)="sendOutput(false)">&#10006;</span>
+        </div>
+        <div class="row">
+            <h1>Confirm Action</h1>
+        </div>
+        <div class="row">
+            <p>Are you sure you would like to proceed? This action cannot be undone.</p>
+        </div><br>
+        <div class="row">
+            <button class="button cancel" (click)="sendOutput(false)">Cancel</button>
+            <button class="button confirm" (click)="sendOutput(true)">Confirm</button>
+        </div>
+    </div>
+</div>

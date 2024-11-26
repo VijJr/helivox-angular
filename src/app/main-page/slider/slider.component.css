@@ -1,0 +1,28 @@
+.row {
+    text-align: center;
+
+}
+
+
+.imageHold{
+    margin: 40px 0px 0px 0px;
+}
+
+.big {
+    font-size: 100px;
+    font-weight: 500;
+    user-select: none; 
+    cursor: pointer;
+    display: inline 
+}
+
+@media only screen and (max-width: 900px) {
+    .big {
+        font-size: 50px;
+        font-weight: 500;
+        user-select: none; 
+        cursor: pointer;
+        display: inline 
+    }
+
+}

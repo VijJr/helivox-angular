@@ -1,0 +1,38 @@
+@property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+.col-md-6 {
+    padding: 40px;
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+p.big {
+    font-size: 10vw;
+    display:inline;
+    transition: --num 3s;
+    counter-set: num var(--num);
+}
+
+.row {
+    padding: 70px 0px 70px 0px;
+}
+@media only screen and (max-width: 900px) {
+    p.big {
+      font-size: 100px
+    }
+    .row {
+        padding: 70px 20px 70px 20px;
+    }
+    .change-padding {
+        margin-bottom: 120px;
+    }
+}
+@media only screen and (min-width: 1300px) {
+    p.big:first-of-type::after {
+        content: counter(num);
+    }
+}

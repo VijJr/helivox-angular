@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="dropdown">
+        <div class="row">
+            <div class="col-md-4 no-pad">
+                <div class="inner-cont">
+                    <p class="sort-text" *ngFor="let catalog of catalogs; let i = index" [ngClass]="currentCatalog === i ? 'act' : ''"><a (click)="currentCatalog = i">{{catalog}}</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 no-pad">
+                <div class="inner-cont">
+                    <p class="sort-text" *ngFor="let state of states; let i = index" [ngClass]="currentState === i ? 'act' : ''"><a (click)="currentState = i; changeSchool()">{{state}}</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 no-pad">
+                <div class="inner-cont">
+                    <p class="sort-text" *ngFor="let school of schools; let i = index"><a [routerLink]="['/catalogs', currentCatalog, currentState, i]" (click)="resetDpdn()">{{school}}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.img {
+    background-image: url(../../../assets/banner-full.png);
+    background-repeat: no-repeat;
+    background-size: contain;  
+    object-fit: cover;
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: calc(70% + 4vw + 4vh);
+    font-weight: 700;
+
+
+
+    background-image: linear-gradient(to left, black, black,black,black, black,black, black, black,black,black, black, #5dc60b, #5dc60b,  #5dc60b, #5dc60b, #5dc60b,  #5dc60b, #5dc60b, #5dc60b,  #5dc60b, #5dc60b, #5dc60b,  #5dc60b);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        color: transparent;
+}
+
+p {
+    font-size: calc(10% + .8vw + .8vh);
+    font-weight: 100;
+
+
+}
+
+.cont {
+    position: absolute;
+    top: 40%;
+    left: 7%;
+}
+
+@media only screen and (max-width: 900px) {
+    p {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,42 @@
+
+
+<div class="row" style="margin-right: 100px;">
+
+
+    <!-- Admin Edit Feature -->
+
+    <div class="col-lg-4 col-sm-6" (click)="openModal(-1)" *ngIf="isEditorMode()">
+        <div class="card card-content" style="border: 1px solid black; " >
+            <div class="card-body" style="text-align: center;">
+              <img src="../../../../assets/plus.png" alt="" style="width: 130px; margin-top:6%; margin-left: 6%">
+            </div>
+        </div>
+    </div>
+
+
+
+    <ng-container *ngFor="let n of catalogData; let i = index">
+        <div class="col-lg-4 col-sm-6" (click)="openModal(i)" *ngIf="passesTags(i)">
+            <div class="card card-content" [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(' + n.image + ')'}" >
+                <div class="card-header">
+                    <p style="color: white; margin: 0">
+                        {{n.title.toUpperCase()}} 
+                    </p>
+                </div>
+                <div class="card-body">
+                  <p class="tags" *ngFor="let j of n.labels">{{j}}</p>
+                  <img *ngIf="checkIfRating(i) >= 4" src="../../../../assets/prestigious_badge.png" style="width: 30px; position: absolute; right: 10px; top: 40px;" title="This is a prestigious program!">
+                  <img *ngIf="checkIfRating(i) >= 3 && checkIfRating(i) < 4" src="../../../../assets/distinguished_badge.png" style="width: 30px; position: absolute; right: 10px; top: 40px;" title="This is a distinguished program!">
+
+        
+                </div>
+                <span>&#8594;</span>
+            </div>
+        </div>
+    </ng-container>
+
+</div>
+
+<div class="loading" *ngIf="unloaded">Loading&#8230;</div>
+
+<modal *ngIf="isOpen" (openEvent)="closeModal()" [index]="openedCatalog" [filters]="catalogCategory" [selected]="selected" [allCatalogData]="catalogData" [inputs]="inputs" [volMenu]="false"></modal>

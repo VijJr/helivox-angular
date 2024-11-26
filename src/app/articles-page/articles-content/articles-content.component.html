@@ -1,0 +1,36 @@
+<div class="container-fluid" *ngIf="!showArticle">
+
+    <div class="row">
+        <div class="col-xs-8">
+            <button class="button" role="button" 
+                [ngClass]="selected === articlesButtons[i] ? 'button-active' : ''" 
+                (click)="selected = articlesButtons[i];" 
+                *ngFor="let button of articlesButtons; let i = index">
+            {{articlesButtons[i]}}</button>
+        </div>
+    </div>
+
+    <div class="col-md-4"
+    *ngFor="let obj of testObj">
+        <div class="card">
+            <img [src]="obj.image" alt="testImg">
+            <h2>{{obj.title}}</h2>
+            <p>by {{obj.author}} on 'date'</p>
+            <p class="blue"
+            (click)="showArticle=true; gotoTop();">
+            View article</p>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="showArticle">
+
+    <div style="text-align: center; padding: 50px;">
+        <button class="button"
+        (click)="showArticle=false; gotoTop();"
+        style="background-color: rgb(120, 62, 213); color: white;">
+        Return</button>
+    </div>
+
+</div>
